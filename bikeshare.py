@@ -9,7 +9,6 @@ def get_filters():
 
 
     print('Hello! Let\'s explore some US bikeshare data!')
-    # TO DO: get user input for city (chicago, new york city, washington). HINT: Use a while loop to handle invalid inputs
     cities = ('Chicago', 'New york city', 'Washington')
     months = ['all','january', 'february', 'march', 'april', 'may', 'june']
     days = ['all','monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday','sunday']
@@ -19,22 +18,18 @@ def get_filters():
         if city in cities:
             break
 
-    # TO DO: get user input for month (all, january, february, ... , june)
     while True:
         month = input('Please enter a month to get result {} \n'.format(months))
         if month in months:
             break
             
-    # TO DO: get user input for day of week (all, monday, tuesday, ... sunday)    
     while True:
         day = input('Please enter a day to get result {} \n'.format(days))
         if day in days:
             break
 
     print('-'*40)
-#     print("city, month, day" + city, month, day)
     return city, month, day
-
 
 def load_data(city, month, day):
    
