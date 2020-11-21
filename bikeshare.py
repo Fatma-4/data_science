@@ -2,9 +2,7 @@ import time
 import pandas as pd
 import numpy as np
 
-CITY_DATA = { 'Chicago': 'chicago.csv',
-              'New york city': 'new_york_city.csv',
-              'Washington': 'washington.csv' }
+CITY_DATA = { 'Chicago': 'chicago.csv','New york city': 'new_york_city.csv','Washington': 'washington.csv' }
 
 def get_filters():
 
@@ -18,16 +16,19 @@ def get_filters():
         city = input('Which of these cities do you want to see data : {} \n'.format(cities))
         if city in cities:
             break
+
     # TO DO: get user input for month (all, january, february, ... , june)
     while True:
         month = input('Please enter a month to get result {} \n'.format(months))
         if month in months:
             break
+            
     # TO DO: get user input for day of week (all, monday, tuesday, ... sunday)    
     while True:
         day = input('Please enter a day to get result {} \n'.format(days))
         if day in days:
             break
+
     print('-'*40)
 #     print("city, month, day" + city, month, day)
     return city, month, day
@@ -99,7 +100,7 @@ def station_stats(df):
 
     # TO DO: display most frequent combination of start station and end station trip
     mostCommonStartEndStation = df.groupby(['Start Station', 'End Station']).count()
-    print("\nMost commonly used combination of start station and end station is .." ,mostCommonStartStation , " & ", mostCommonEndStation)
+    print("\nMost commonly used combination of start and end station is .." ,mostCommonStartStation , " - ", mostCommonEndStation)
     
 
     print("\nThis took %s seconds." % (time.time() - start_time))
@@ -127,33 +128,46 @@ def trip_duration_stats(df):
     print('-'*40)
 
 
-# def user_stats(df):
-#     """Displays statistics on bikeshare users."""
+def user_stats(df):
+  #   """Displays statistics on bikeshare users."""
 
-#     print('\nCalculating User Stats...\n')
-#     start_time = time.time()
+    print('\nCalculating user Stats...\n')
+    start_time = time.time()
 
-#     # TO DO: Display counts of user types
-#     userCounts = df['User Type'].value_counts()
-#     print("\nCounts of user types is .." , userCounts)
+    # TO#  DO: Display counts of user types
+    userCounts = df['User Type'].value_counts()
+    print("\nCounts of user types is .." , userCounts)
+    
+    
+    # TO DO: Display counts of gender
+    try:
+        genderCounts = df['Gender'].value_counts()
+        print("\nCount# s of gender is .. " ,genderCounts)
+    except KeyError:
+        print("\nGender types:\nNo data for this month.")
+
+    # TO DO: Display earliest, most recent, and most common year of birth
+    try:
+        earliest = df['Birth Year'].min()
+        print("\nEarliest is .." ,earliest)
+    except KeyError:
+      print("\nEarliest year:\nNo data for this month.")
+
+    try:
+        mostRecent = df['Birth Year'].max()
+        print("\nMost recent is .." ,mostRecent)
+    except KeyError:
+        print("\nMost recent year:\nNo data for this month.")
+
+    try:
+        mostCommonBirth = df['Birth Year'].value_counts().idxmax()
+        print("\nMost common year of birth is .." ,mostCommonBirth)
+    except KeyError:
+        print("\nMost common year:\nNo data for this month.")
 
 
-#     # TO DO: Display counts of gender
-#     genderCounts = df['Gender'].value_counts()
-#     print("\nCounts of gender is .. " ,genderCounts)
-
-
-#     # TO DO: Display earliest, most recent, and most common year of birth
-#     earliest = df['Birth_Year'].min()
-#     print("\nEarliest is .." ,earliest)
-#     mostRecent = df['Birth_Year'].max()
-#     print("\nMost recent is .." ,mostRecent)
-#     mostCommonBirth = df['Birth Year'].mode()[0]
-#     print("\nMost common year of birth is .." ,mostCommonBirth)
-
-
-#     print("\nThis took %s seconds." % (time.time() - start_time))
-#     print('-'*40)
+    print("\nThis took %s seconds." % (time.time() - start_time))
+    print('-'*40)
 
 
 def main():
@@ -164,7 +178,7 @@ def main():
         time_stats(df)
         station_stats(df)
         trip_duration_stats(df)
-        # user_stats(df)
+        user_stats(df)
 
         restart = input('\nWould you like to restart? Enter yes or no.\n')
         if restart.lower() != 'yes':
