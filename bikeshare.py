@@ -11,12 +11,15 @@ def get_filters():
     print('Hello! Let\'s explore some US bikeshare data!')
     cities = ('Chicago', 'New york city', 'Washington')
     months = ['all','january', 'february', 'march', 'april', 'may', 'june']
+
     days = ['all','monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday','sunday']
+
 
     while True:
         city = input('Which of these cities do you want to see data : {} \n'.format(cities))
         if city in cities:
             break
+
 
     while True:
         month = input('Please enter a month to get result {} \n'.format(months))
