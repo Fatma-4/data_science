@@ -4,10 +4,7 @@ import numpy as np
 
 CITY_DATA = { 'Chicago': 'chicago.csv','New york city': 'new_york_city.csv','Washington': 'washington.csv' }
 
-
 def get_filters():
-
-
     print('Hello! Let\'s explore some US bikeshare data!')
     cities = ('Chicago', 'New york city', 'Washington')
     months = ['all','january', 'february', 'march', 'april', 'may', 'june']
@@ -32,7 +29,6 @@ def get_filters():
     return city, month, day
 
 def load_data(city, month, day):
-   
     df = pd.read_csv(CITY_DATA[city])
     
     df['Start Time'] = pd.to_datetime(df['Start Time'])
