@@ -16,18 +16,17 @@ def get_filters():
         city = input('Which of these cities do you want to see data : {} \n'.format(cities))
         if city in cities:
             break
-
-
     while True:
         month = input('Please enter a month to get result {} \n'.format(months))
         if month in months:
             break
-            
     while True:
         day = input('Please enter a day to get result {} \n'.format(days))
         if day in days:
             break
-
+    print(month)
+    print(day)
+    
     print('-'*40)
     return city, month, day
 
