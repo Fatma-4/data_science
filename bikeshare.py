@@ -47,9 +47,6 @@ def load_data(city, month, day):
     if day != 'all':
         df = df[df['day_of_week'] == day.title()]
     
-    print(day)
-    print(month)
-
     
     return df
 
