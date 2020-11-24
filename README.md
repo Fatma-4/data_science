@@ -1,6 +1,6 @@
 # data_science
 
-This repository for Udacity Programming For Data Science for year 2020
+This repository for Udacity Programming For Data Science
 
 Project 1
 Overview
