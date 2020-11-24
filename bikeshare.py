@@ -8,9 +8,7 @@ def get_filters():
     print('Hello! Let\'s explore some US bikeshare data!')
     cities = ('Chicago', 'New york city', 'Washington')
     months = ['all','january', 'february', 'march', 'april', 'may', 'june']
-
     days = ['all','monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday','sunday']
-
 
     while True:
         city = input('Which of these cities do you want to see data : {} \n'.format(cities))
@@ -46,8 +44,7 @@ def load_data(city, month, day):
     if day != 'all':
         df = df[df['day_of_week'] == day.title()]
     
-    print(day)
-    print(month)
+    
     return df
 
 def time_stats(df):
